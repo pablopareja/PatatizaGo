@@ -31,8 +31,7 @@ public class PatatizaGoSlim implements Executable{
                         "go_terms_lost_not_included_in_slim_set" + "\n";
     
     public static String HEADER_2 = "id" + SEPARATOR + 
-                        "name" + SEPARATOR + "annotations_count" + SEPARATOR
-                        + "\n";
+                        "name" + SEPARATOR + "annotations_count" + SEPARATOR;
 
     public void execute(ArrayList<String> array) {
         String[] args = new String[array.size()];
@@ -120,34 +119,30 @@ public class PatatizaGoSlim implements Executable{
 
                 while(bioTreeSet.size() > 0){
                     GoTermXML goTerm = bioTreeSet.pollLast();
-                    String line = goTerm.getId() + SEPARATOR + goTerm.getGoName() + SEPARATOR
+                    String line = "\n" + goTerm.getId() + SEPARATOR + goTerm.getGoName() + SEPARATOR
                             + goTerm.getAnnotationsCount();
                                    
-                    bioProcBuff.write(line);
-                    line += "\n";     
+                    bioProcBuff.write(line);  
                 }
 
                 //----------------------MOLECULAR FUNCTION-----------------------------
 
                 while(molTreeSet.size() > 0){
                     GoTermXML goTerm = molTreeSet.pollLast();
-                    String line = goTerm.getId() + SEPARATOR + goTerm.getGoName() + SEPARATOR
+                    String line = "\n" + goTerm.getId() + SEPARATOR + goTerm.getGoName() + SEPARATOR
                             + goTerm.getAnnotationsCount();
                    
                     molFuncBuff.write(line);
-                    line += "\n";
                 }
 
                 //----------------------CELLULAR FUNCTION-----------------------------
 
                 while(cellTreeSet.size() > 0){
                     GoTermXML goTerm = cellTreeSet.pollLast();
-                    String line = goTerm.getId() + SEPARATOR + goTerm.getGoName() + SEPARATOR
+                    String line = "\n" + goTerm.getId() + SEPARATOR + goTerm.getGoName() + SEPARATOR
                             + goTerm.getAnnotationsCount();
 
                     cellCompBuff.write(line);
-                    
-                    line += "\n";
                 }
 
 
